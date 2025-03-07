@@ -4,57 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Калькулятор ХЕ</title>
+    <meta name="description" content="Калькулятор Хлебных Единиц (ХЕ) для расчета углеводов и инсулина.">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Калькулятор ХЕ</h1>
+    <main class="container">
+        <header>
+            <h1>Калькулятор ХЕ</h1>
+        </header>
         
-        <div class="input-group">
+        <section class="input-group">
             <label for="carbs">Углеводы на 100 г:</label>
             <input type="number" step="0.1" id="carbs" placeholder="Введите углеводы" inputmode="decimal">
-        </div>
+        </section>
         
-        <div class="input-group">
+        <section class="input-group">
             <label for="portion">Порция (г):</label>
             <input type="number" step="0.1" id="portion" placeholder="Введите порцию" inputmode="decimal">
-        </div>
+        </section>
         
-        <div class="result">
+        <section class="result">
             <p><i>🍞</i>ХЕ: <span id="xe_result">0.0</span></p>
             <p><i>💉</i>Инсулин: <span id="insulin_result">0</span></p>
-        </div>
+        </section>
 
-        <div class="product-buttons">
-            <button onclick="setCarbs(71)">Гречка</button>
-            <button onclick="setCarbs(28)">Рис</button>
-            <button onclick="setCarbs(17)">Картофель</button>
-            <button onclick="setCarbs(14)">Яблоко</button>
-            <button onclick="setCarbs(23)">Банан</button>
-            <button onclick="setCarbs(50)">Хлеб</button>
-            <button onclick="setCarbs(25)">Макароны</button>
-            <button onclick="setCarbs(12)">Овсянка</button>
-        </div>
-
-        <button class="settings-btn" onclick="openSettings()">⚙️ Настройки</button>
-    </div>
-
-    <!-- Pop-up для настроек -->
-    <div class="popup" id="settingsPopup">
-        <div class="popup-content">
-            <h2>Настройки</h2>
-            <div class="input-group">
-                <label for="carbsPerXE">Углеводов в 1 ХЕ (г):</label>
-                <input type="number" step="0.1" id="carbsPerXE" value="10">
-            </div>
-            <div class="input-group">
-                <label for="insulinPerXE">Инсулина на 1 ХЕ (ЕД):</label>
-                <input type="number" step="0.1" id="insulinPerXE" value="2">
-            </div>
-            <button onclick="saveSettings()">Сохранить</button>
-            <button onclick="closeSettings()">Закрыть</button>
-        </div>
-    </div>
+        <section class="product-buttons">
+            <button onclick="setCarbs(71)" aria-label="Гречка">🍚 Гречка</button>
+            <button onclick="setCarbs(28)" aria-label="Рис">🍚 Рис</button>
+            <button onclick="setCarbs(17)" aria-label="Картофель">🥔 Картофель</button>
+            <button onclick="setCarbs(14)" aria-label="Яблоко">🍎 Яблоко</button>
+            <button onclick="setCarbs(23)" aria-label="Банан">🍌 Банан</button>
+            <button onclick="setCarbs(50)" aria-label="Хлеб">🍞 Хлеб</button>
+            <button onclick="setCarbs(25)" aria-label="Макароны">🍝 Макароны</button>
+            <button onclick="setCarbs(12)" aria-label="Овсянка">🥣 Овсянка</button>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
