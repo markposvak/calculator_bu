@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Arial', sans-serif;
     background: #ffffff;
     color: #333;
     margin: 0;
@@ -18,16 +18,10 @@ body {
     max-width: 400px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(0, 0, 0, 0.1);
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    text-align: center; /* Центрируем текст */
 }
 
 h1 {
-    text-align: center;
     margin-bottom: 20px;
     font-weight: 600;
     font-size: 24px;
@@ -36,7 +30,7 @@ h1 {
 
 .input-group {
     margin-bottom: 20px;
-    padding: 0 12px; /* Отступы слева и справа */
+    text-align: left; /* Текст label выравниваем по левому краю */
 }
 
 .input-group label {
@@ -48,7 +42,7 @@ h1 {
 }
 
 .input-group input {
-    width: 100%; /* Оставляем 100% ширину */
+    width: 100%;
     padding: 12px;
     background: #f9f9f9;
     border: 1px solid #ddd;
@@ -57,6 +51,7 @@ h1 {
     color: #333;
     outline: none;
     transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Учитываем padding в ширине */
 }
 
 .input-group input:focus {
@@ -94,6 +89,7 @@ h1 {
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 20px;
+    justify-content: center; /* Центрируем кнопки */
 }
 
 .product-buttons button {
