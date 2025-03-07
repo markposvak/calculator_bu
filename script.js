@@ -1,111 +1,42 @@
-body {
-    font-family: 'Arial', sans-serif;
-    background: #ffffff;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+let carbsPerXE = 10; // Углеводов в 1 ХЕ (по умолчанию 10 г)
+let insulinPerXE = 2; // Инсулина на 1 ХЕ (по умолчанию 2 ЕД)
+
+// Рассчитываем ХЕ и инсулин
+function calculateXE() {
+    const carbs = parseFloat(document.getElementById("carbs").value) || 0;
+    const portion = parseFloat(document.getElementById("portion").value) || 0;
+
+    if (carbs < 0 || portion < 0) {
+        alert("Пожалуйста, введите положительные значения.");
+        return;
+    }
+
+    const xe = (carbs * portion) / (100 * carbsPerXE);
+    const insulin = Math.round(xe * insulinPerXE);
+    document.getElementById("xe_result").textContent = xe.toFixed(1);
+    document.getElementById("insulin_result").textContent = insulin;
 }
 
-.container {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 30px;
-    width: 90%;
-    max-width: 400px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    text-align: center; /* Центрируем текст */
+// Устанавливаем углеводы при выборе продукта
+function setCarbs(carbs) {
+    document.getElementById("carbs").value = carbs;
+    calculateXE();
 }
 
-h1 {
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-size: 24px;
-    color: #333;
+// Валидация ввода
+function validateInput(value) {
+    return value.replace(/[^0-9.]/g, "").replace(/(\..*)\./g, "$1");
 }
 
-.input-group {
-    margin-bottom: 20px;
-    text-align: left; /* Текст label выравниваем по левому краю */
-}
+// Ограничиваем ввод только цифрами и точкой
+document.getElementById("carbs").addEventListener("input", function (e) {
+    e.target.value = validateInput(e.target.value);
+});
 
-.input-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 14px;
-    color: #555;
-}
+document.getElementById("portion").addEventListener("input", function (e) {
+    e.target.value = validateInput(e.target.value);
+});
 
-.input-group input {
-    width: 100%;
-    padding: 12px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 16px;
-    color: #333;
-    outline: none;
-    transition: border-color 0.3s ease;
-    box-sizing: border-box; /* Учитываем padding в ширине */
-}
-
-.input-group input:focus {
-    border-color: #ff6f61;
-}
-
-.result {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.result p {
-    margin: 10px 0;
-    font-size: 18px;
-    font-weight: 500;
-    color: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.result i {
-    margin-right: 10px;
-    font-size: 20px;
-}
-
-#xe_result, #insulin_result {
-    color: #ff6f61;
-    font-weight: bold;
-    transition: opacity 0.3s ease;
-}
-
-.product-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
-    justify-content: center; /* Центрируем кнопки */
-}
-
-.product-buttons button {
-    background: linear-gradient(135deg, #ff6f61, #ff3b2f);
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 12px 15px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 1 1 calc(50% - 10px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.product-buttons button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
+// Автоматический расчёт при изменении значений
+document.getElementById("carbs").addEventListener("input", calculateXE);
+document.getElementById("portion").addEventListener("input", calculateXE);
