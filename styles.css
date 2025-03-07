@@ -36,6 +36,7 @@ h1 {
 
 .input-group {
     margin-bottom: 20px;
+    padding: 0 12px; /* Отступы слева и справа */
 }
 
 .input-group label {
@@ -47,7 +48,7 @@ h1 {
 }
 
 .input-group input {
-    width: 100%;
+    width: calc(100% - 24px); /* Учитываем padding */
     padding: 12px;
     background: #f9f9f9;
     border: 1px solid #ddd;
