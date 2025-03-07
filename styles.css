@@ -48,7 +48,7 @@ h1 {
 }
 
 .input-group input {
-    width: calc(100% - 24px); /* Учитываем padding */
+    width: 100%; /* Оставляем 100% ширину */
     padding: 12px;
     background: #f9f9f9;
     border: 1px solid #ddd;
